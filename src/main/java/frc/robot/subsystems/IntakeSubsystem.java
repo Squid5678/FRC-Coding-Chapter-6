@@ -25,10 +25,16 @@ public class IntakeSubsystem extends SubsystemBase {
   public IntakeSubsystem() {
     /* Configure the motor's factor default settings. */
     intakeWheelMotor.getConfigurator().apply(IntakeConstants.wheelConfigs);
+
+    intakeArmMotor.getConfigurator().apply(IntakeConstants.armConfigs);
     
     /* Apply a current configuration to the motor. */
     intakeWheelMotor.getConfigurator().refresh(IntakeConstants.currentLimits);
     intakeWheelMotor.getConfigurator().apply(IntakeConstants.currentLimits);
+
+    intakeArmMotor.getConfigurator().refresh(IntakeConstants.currentLimits);
+    intakeArmMotor.getConfigurator().apply(IntakeConstants.currentLimits);
+
   }
 
   /**
