@@ -27,11 +27,14 @@ public class IntakeEjectCommand extends Command {
   @Override
   public void execute() {
     intakeSubsystem.runIntake(0.5);
+    intakeSubsystem.setIntakePosition(90);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    intakeSubsystem.setIntakePosition(0);
+  }
 
   // Returns true when the command should end.
   @Override

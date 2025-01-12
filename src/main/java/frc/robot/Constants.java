@@ -5,6 +5,9 @@
 package frc.robot;
 
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.FeedbackConfigs;
+import com.ctre.phoenix6.configs.MotionMagicConfigs;
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 
@@ -42,8 +45,22 @@ public final class Constants {
   }
 
   public static class IntakeConstants {
-      public static final int intakeMotorID = 5;
-      public static final TalonFXConfiguration configs = new TalonFXConfiguration();
+      public static final int intakeWheelMotorID = 5;
+      public static final TalonFXConfiguration wheelConfigs = new TalonFXConfiguration();
+
+      public static final int intakeArmMotorID = 10; 
+
+      public static final TalonFXConfiguration armConfigs = new TalonFXConfiguration()
+                                                            .withSlot0(new Slot0Configs()
+                                                                      .withKP(10)  
+                                                                      .withKI(0)
+                                                                      .withKD(0.1))
+                                                            .withMotionMagic(new MotionMagicConfigs()
+                                                                      .withMotionMagicCruiseVelocity(0.25)
+                                                                      .withMotionMagicAcceleration(0.25))
+                                                            .withFeedback(new FeedbackConfigs()
+                                                                      .withSensorToMechanismRatio(50));
+
       public static final CurrentLimitsConfigs currentLimits = new CurrentLimitsConfigs()
         .withStatorCurrentLimit(80)
         .withStatorCurrentLimitEnable(true)
